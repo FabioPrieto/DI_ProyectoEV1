@@ -17,39 +17,52 @@ main h2.titulo-principal{
     color: var(--clr-main);
     margin-bottom: 2rem ;
 }
-
-.contenedor-productos{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
-}
-.producto{
-    position: relative;
-    margin-bottom: 50px;
-}
-.producto img{
+.carrito-producto{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
+    height: 10%;
+    background-color: var(--clr-gray);
+    padding: 0.2rem;
     border-radius: 6px;
 }
-.producto .producto-detalles{
-    background-color: var(--clr-main);
-    width: 100%;
+.carrito-producto img {
+    height: 50px;
     border-radius: 6px;
-    position: absolute;
-    bottom: -50px;
-    padding: 0.7rem;
 }
-.producto .producto-detalles > *{
-    color: var(--clr-white);
-    margin: 0.1rem;
+.carrito-acciones{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
 }
-.producto .producto-detalles .producto-agregar{
-    background-color: var(--clr-white);
+.carrito-acciones button{
+    background-color: var(--clr-gray);
     color: var(--clr-main);
-    width: 100%;
-    padding: 0.4rem;
     border: 0px;
+    padding: 0.5rem;
     border-radius: 6px;
+}
+.carrito-acciones-derecha{
+    display: flex;
+}
+.carrito-acciones-total{
+    display: flex;
+    align-items: center;
+}
+.carrito-acciones-derecha p{
+    padding: 0.5rem;
+    background-color: var(--clr-gray);
+}
+.carrito-acciones-derecha p:first-child{
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+.carrito-acciones-derecha .carrito-acciones-comprar{
+    background-color: var(--clr-main);
+    color: var(--clr-white);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0px;
 }
 aside{
     display: flex;
@@ -91,7 +104,7 @@ aside nav{
     display: block;
     margin: 2rem 0rem;
 }
-.menu li a{
+.menu li a.active{
     background-color: var(--clr-white);
     color: var(--clr-main);
 }
@@ -99,33 +112,8 @@ aside nav{
     color: var(--clr-white);
     background-color: var(--clr-main);
 }
-.menu li button:hover{
-    background-color: var(--clr-white);
-    color: var(--clr-main);
-}
 aside footer{
     flex-grow: 0.01;
     margin: 0 auto 0 0;
 }
-
-/* Media queries */
-
-/* Para pantallas de 850px o menos */
-@media screen and (max-width: 850px) {
-  /* Estilos específicos para este tamaño */
-}
-
-/* Para pantallas de 675px o menos */
-@media screen and (max-width: 675px) {
-  /* Estilos específicos para este tamaño */
-}
-
-/* Para pantallas de 600px o menos */
-@media screen and (max-width: 600px) {
-  /* Estilos específicos para este tamaño */
-}
-
-/* Para pantallas de 400px o menos */
-@media screen and (max-width: 400px) {
-  /* Estilos específicos para este tamaño */
-}
+/* Arriba codigo repetido Ponerlo en comun.css */
