@@ -1,0 +1,128 @@
+.header-mobile{
+    display: none;
+}
+.contenedor{
+    height: 100vh;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 1rem;
+}
+main{
+    background-color: var(--clr-white);
+    border-radius: 6px;
+    padding: 1rem;
+}
+main h2.titulo-principal{
+    color: var(--clr-main);
+    margin-bottom: 2rem ;
+}
+
+.contenedor-productos{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+}
+.producto{
+    position: relative;
+    margin-bottom: 50px;
+}
+.producto img{
+    width: 100%;
+    border-radius: 6px;
+}
+.producto .producto-detalles{
+    background-color: var(--clr-main);
+    width: 100%;
+    border-radius: 6px;
+    position: absolute;
+    bottom: -50px;
+    padding: 0.7rem;
+}
+.producto .producto-detalles > *{
+    color: var(--clr-white);
+    margin: 0.1rem;
+}
+.producto .producto-detalles .producto-agregar{
+    background-color: var(--clr-white);
+    color: var(--clr-main);
+    width: 100%;
+    padding: 0.4rem;
+    border: 0px;
+    border-radius: 6px;
+}
+aside{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+    position: sticky;
+}
+aside > button{
+    display: none;
+}
+aside header{
+    flex-grow: 0.01;
+    top: 0px;
+    color: var(--clr-white);
+}
+aside nav{
+    flex-grow: 0.98;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.menu{
+    width: 100%;
+}
+.menu li > *{
+    color: var(--clr-white);
+    background-color: var(--clr-green);
+    border: 0px;
+    padding: 2rem;
+    width: 100%;
+    text-align: left;
+    border-radius: 6px;
+    display: block;
+    margin: 2rem 0rem;
+}
+.menu li a{
+    background-color: var(--clr-white);
+    color: var(--clr-main);
+}
+.menu li a .numerito{
+    color: var(--clr-white);
+    background-color: var(--clr-green);
+}
+.menu li button:hover{
+    background-color: var(--clr-white);
+    color: var(--clr-main);
+}
+aside footer{
+    flex-grow: 0.01;
+}
+
+
+/* Media queries */
+
+/* Para pantallas de 850px o menos */
+@media screen and (max-width: 850px) {
+  /* Estilos específicos para este tamaño */
+}
+
+/* Para pantallas de 675px o menos */
+@media screen and (max-width: 675px) {
+  /* Estilos específicos para este tamaño */
+}
+
+/* Para pantallas de 600px o menos */
+@media screen and (max-width: 600px) {
+  /* Estilos específicos para este tamaño */
+}
+
+/* Para pantallas de 400px o menos */
+@media screen and (max-width: 400px) {
+  /* Estilos específicos para este tamaño */
+}
