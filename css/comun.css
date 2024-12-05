@@ -39,3 +39,9 @@ a {
     color: var(--clr-main-light);
     font-size: .85rem;
 }
+
+/**/
+
+body{
+    background-color: var(--clr-green);
+}
