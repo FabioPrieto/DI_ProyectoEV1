@@ -20,7 +20,7 @@ main h2.titulo-principal{
 
 .contenedor-productos{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
 }
 .producto{
@@ -82,7 +82,7 @@ aside nav{
 }
 .menu li > *{
     color: var(--clr-white);
-    background-color: var(--clr-green);
+    background-color: var(--clr-main);
     border: 0px;
     padding: 2rem;
     width: 100%;
@@ -97,7 +97,7 @@ aside nav{
 }
 .menu li a .numerito{
     color: var(--clr-white);
-    background-color: var(--clr-green);
+    background-color: var(--clr-main);
 }
 .menu li button:hover{
     background-color: var(--clr-white);
