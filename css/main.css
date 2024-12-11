@@ -1,60 +1,73 @@
-.header-mobile{
-    display: none;
+.header-mobile {
+  display: none;
 }
-.contenedor-productos{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
+.contenedor-productos {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
 }
-.producto{
-    position: relative;
-    margin-bottom: 50px;
+.producto {
+  position: relative;
+  margin-bottom: 50px;
 }
-.producto img{
-    width: 100%;
-    border-radius: 6px;
+.producto img {
+  width: 100%;
+  border-radius: 6px;
 }
-.producto .producto-detalles{
-    background-color: var(--clr-main);
-    width: 100%;
-    border-radius: 6px;
-    position: absolute;
-    bottom: -50px;
-    padding: 0.7rem;
+.producto .producto-detalles {
+  background-color: var(--clr-main);
+  width: 100%;
+  border-radius: 6px;
+  position: absolute;
+  bottom: -50px;
+  padding: 0.7rem;
 }
-.producto .producto-detalles > *{
-    color: var(--clr-white);
-    margin: 0.1rem;
+.producto .producto-detalles > * {
+  color: var(--clr-white);
+  margin: 0.1rem;
 }
-.producto .producto-detalles .producto-agregar{
-    background-color: var(--clr-white);
-    color: var(--clr-main);
-    width: 100%;
-    padding: 0.4rem;
-    border: 0px;
-    border-radius: 6px;
+.producto .producto-detalles .producto-agregar {
+  background-color: var(--clr-white);
+  color: var(--clr-main);
+  width: 100%;
+  padding: 0.4rem;
+  border: 0px;
+  border-radius: 6px;
 }
 /* Aside */
-.menu li a{
-    background-color: var(--clr-white);
-    color: var(--clr-main);
+.menu li a {
+  background-color: var(--clr-white);
+  color: var(--clr-main);
 }
 
 /* Media queries */
 
+/* Para pantallas de 1300px o menos */
+@media screen and (max-width: 1300px) {
+  .contenedor-productos {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 /* Para pantallas de 850px o menos */
 @media screen and (max-width: 850px) {
-  /* Estilos específicos para este tamaño */
+  .contenedor-productos {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* Para pantallas de 675px o menos */
 @media screen and (max-width: 675px) {
-  /* Estilos específicos para este tamaño */
+  .contenedor-productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* Para pantallas de 600px o menos */
 @media screen and (max-width: 600px) {
-  /* Estilos específicos para este tamaño */
+  .contenedor-productos {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 /* Para pantallas de 400px o menos */
