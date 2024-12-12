@@ -52,6 +52,12 @@
   border-top-left-radius: 0;
   border-bottom-left-radius: 0px;
 }
+.carrito-vacio{
+  display: none;
+}
+.carrito-comprado{
+  display: none;
+}
 /* Aside */
 .menu li a.active {
   background-color: var(--clr-white);

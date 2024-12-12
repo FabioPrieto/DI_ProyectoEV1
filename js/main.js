@@ -22,14 +22,14 @@ const cargarProductos = async () => {
         const producto = e.target.closest(".producto");
 
         const productoId = producto.getAttribute("id");
-        const productoTitulo =
-          producto.querySelector(".producto-titulo").textContent;
+        const productoTitulo = producto.querySelector(".producto-titulo").textContent;
         const productoPrecio = parseFloat(
           producto
             .querySelector(".producto-precio")
             .textContent.replace("$", "")
             .trim()
         );
+        const productoImagen = producto.querySelector(".producto-imagen").src
 
         let numerito = document.getElementById("numerito");
         numerito.textContent = parseInt(numerito.textContent) + 1;
@@ -39,6 +39,7 @@ const cargarProductos = async () => {
           cant: 1,
           precio: productoPrecio,
           nombre: productoTitulo,
+          imagen: productoImagen,
         };
 
         let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -91,6 +92,7 @@ const activarBoton = (botonActivo) => {
   botonActivo.classList.add("active");
 };
 
+// Para Comun.js
 function actualizarContadorCarrito() {
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
