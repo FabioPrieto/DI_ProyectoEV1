@@ -40,6 +40,10 @@
   color: var(--clr-main);
 }
 
+button.active{
+  background-color: var(--clr-white);
+  color: var(--clr-main);
+}
 /* Media queries */
 
 /* Para pantallas de 1300px o menos */

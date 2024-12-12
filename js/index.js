@@ -26,10 +26,10 @@ const validarCampoTexto = (valor, campo) => {
 const validarPassword = () => {
   const valor = inputs.password.value.trim();
   if (!valor) return "La contraseña es obligatoria.";
-  if (!regexPassword.test(valor)) return "La contraseña debe tener entre 8 y 16 caracteres y solo puede contener letras, números y los caracteres ·$%&/().";
+  if (!regexPassword.test(valor))
+    return "La contraseña debe tener entre 8 y 16 caracteres y solo puede contener letras, números y los caracteres ·$%&/().";
   return "";
 };
-
 
 const validaciones = {
   nombre: () => validarCampoTexto(inputs.nombre.value, "nombre"),
@@ -62,15 +62,15 @@ for (let campo in inputs) {
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
   if (validarFormulario()) {
-    location.assign("./main.html")
+    location.assign("./main.html");
   } else {
     alert("Por favor, corrige los errores antes de enviar.");
   }
 });
 
 document.getElementById("limpiar").addEventListener("click", () => {
-    formulario.reset();
-    for (let campo in errores) {
-      mostrarError(campo, "");
-    }
-  });
+  formulario.reset();
+  for (let campo in errores) {
+    mostrarError(campo, "");
+  }
+});
