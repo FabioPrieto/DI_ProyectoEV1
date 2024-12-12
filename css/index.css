@@ -42,3 +42,6 @@ form[name="formulario"] #botones input:hover{
     background-color: var(--clr-main-light);
     cursor: pointer;    
 }
+.error-message {
+    color: red;
+}
