@@ -16,6 +16,9 @@
   height: 50px;
   border-radius: 6px;
 }
+.carrito-producto-eliminar{
+  color: red;
+}
 .carrito-acciones {
   display: flex;
   justify-content: space-between;

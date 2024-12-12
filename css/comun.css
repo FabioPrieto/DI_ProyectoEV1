@@ -56,6 +56,10 @@ body {
   background-color: var(--clr-main);
 }
 
+button{
+  cursor: pointer;
+}
+
 /* Común en carrito y main */
 
 /* Main */
