@@ -22,48 +22,6 @@ function mostrarCarrito() {
 
   let total = 0;
 
-  // console.log(!carrito.producto)
-  // if (carrito.producto) {
-  //   mensajeCarritoVacio.style.display = "block";
-  // }
-  // carrito.forEach((producto) => {
-  //   const divProducto = document.createElement("div");
-  //   divProducto.classList.add("carrito-producto");
-
-  //   divProducto.innerHTML = `
-  //       <img class="carrito-producto-imagen" src="${
-  //         producto.imagen
-  //       }" alt="Imagen producto">
-  //       <div class="carrito-producto-titulo">
-  //         <small>Título</small>
-  //         <h3>${producto.nombre}</h3>
-  //       </div>
-  //       <div class="carrito-producto-cantidad">
-  //         <small>Cantidad</small>
-  //         <p>${producto.cant}</p>
-  //       </div>
-  //       <div class="carrito-producto-precio">
-  //         <small>Precio</small>
-  //         <p>$${producto.precio}</p>
-  //       </div>
-  //       <div class="carrito-producto-subtotal">
-  //         <small>Subtotal</small>
-  //         <p>$${producto.precio * producto.cant}</p>
-  //       </div>
-  //       <div class="carrito-producto-anhadir">
-  //         <p>Comprar</p>
-  //       </div>
-  //       <div class="carrito-producto-eliminar">
-  //         <p>Eliminar</p>
-  //       </div>
-  //     `;
-
-  //   carritoProductos.appendChild(divProducto);
-
-  //   total += producto.precio * producto.cant;
-  // });
-
-  // document.getElementById("Total").textContent = `$${total}`;
   if (carrito.length === 0) {
     // Si el carrito está vacío, mostramos el mensaje correspondiente
     mensajeCarritoVacio.style.display = "block";
@@ -110,45 +68,102 @@ function mostrarCarrito() {
 
     // Mostrar el total
     document.getElementById("Total").textContent = `$${total}`;
-    carritoAcciones.style.display = "flex";
+
+    const botonesComprar = document.querySelectorAll(".carrito-producto-anhadir");
+    const botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
+
+    botonesComprar.forEach((boton) =>
+      boton.addEventListener("click", (e) => {
+        const index = e.target.getAttribute("data-index");
+        comprarProducto(index);
+      })
+    );
+    botonesEliminar.forEach((boton) =>
+      boton.addEventListener("click", (e) => {
+        const index = e.target.getAttribute("data-index");
+        eliminarProducto(index);
+      })
+    );
   }
 }
 
 // Vaciar carrito
 if (vaciarCarritoBtn) {
   vaciarCarritoBtn.addEventListener("click", function () {
-    // Vaciar el localStorage
-    localStorage.removeItem("carrito");
+    // Mostrar cuadro de confirmación
+    const confirmar = confirm("¿Estás seguro de que deseas vaciar el carrito?");
 
-    // Mostrar mensaje de carrito vacío
-    mensajeCarritoVacio.style.display = "block";
+    if (confirmar) {
+      // Vaciar el localStorage
+      localStorage.removeItem("carrito");
 
-    // Ocultar el contenedor de productos del carrito
-    document.getElementById("carrito-productos").style.display = "none";
+      // Mostrar mensaje de carrito vacío
+      mensajeCarritoVacio.style.display = "block";
 
-    // También actualizamos el contador del carrito
-    actualizarContadorCarrito();
-    document.getElementById("Total").textContent = `0`;
+      // Ocultar el contenedor de productos del carrito
+      document.getElementById("carrito-productos").style.display = "none";
+
+      // También actualizamos el contador del carrito
+      actualizarContadorCarrito();
+      document.getElementById("Total").textContent = `0`;
+
+      alert("El carrito se ha vaciado.");
+    } else {
+      // Si el usuario cancela, no se hace nada
+      console.log("El usuario canceló la acción de vaciar el carrito.");
+    }
   });
 }
 
 // Comprar ahora
 if (comprarAhoraBtn) {
   comprarAhoraBtn.addEventListener("click", function () {
-    // Vaciar el localStorage
-    localStorage.removeItem("carrito");
+    // Mostrar cuadro de confirmación
+    const confirmar = confirm(
+      "¿Estás seguro de que deseas realizar la compra?"
+    );
 
-    // Mostrar mensaje de compra realizada
-    mensajeCarritoComprado.style.display = "block";
+    if (confirmar) {
+      // Vaciar el localStorage
+      localStorage.removeItem("carrito");
 
-    // Ocultar el contenedor de productos del carrito
-    document.getElementById("carrito-productos").style.display = "none";
+      // Mostrar mensaje de compra realizada
+      mensajeCarritoComprado.style.display = "block";
 
-    // También actualizamos el contador del carrito
-    actualizarContadorCarrito();
-    document.getElementById("Total").textContent = `0`;
+      // Ocultar el contenedor de productos del carrito
+      document.getElementById("carrito-productos").style.display = "none";
+
+      // También actualizamos el contador del carrito
+      actualizarContadorCarrito();
+      document.getElementById("Total").textContent = `0`;
+
+      alert("¡Gracias por tu compra! El carrito ha sido vaciado.");
+    } else {
+      // Si el usuario cancela, no se hace nada
+      console.log("El usuario canceló la acción de comprar.");
+    }
   });
 }
+
+// Función para manejar la compra de un producto
+function comprarProducto(index) {
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  carrito.splice(index, 1); // Elimina el producto del carrito
+  localStorage.setItem("carrito", JSON.stringify(carrito)); // Actualiza el localStorage
+  mostrarCarrito(); // Vuelve a renderizar el carrito
+  actualizarContadorCarrito();
+}
+
+// Función para manejar la eliminación de un producto
+function eliminarProducto(index) {
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  carrito.splice(index, 1); // Elimina el producto del carrito
+  localStorage.setItem("carrito", JSON.stringify(carrito)); // Actualiza el localStorage
+  mostrarCarrito(); // Vuelve a renderizar el carrito
+  actualizarContadorCarrito();
+}
+
 
 mostrarCarrito();
 
