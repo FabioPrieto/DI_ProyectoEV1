@@ -78,13 +78,16 @@ const mostrarProductos = (productos) => {
 };
 
 const filtrarProductos = (productos, categoriaId) => {
+  const tituloPrincipal = document.getElementById("titulo-principal");
   if (categoriaId === "todos") {
+    tituloPrincipal.textContent = "Todos los productos";
     mostrarProductos(productos);
   } else {
     const productosFiltrados = productos.filter(
       (producto) => producto.categoria.id === categoriaId
     );
     mostrarProductos(productosFiltrados);
+    tituloPrincipal.textContent = `Productos en ${productosFiltrados[0].categoria.nombre}`;
   }
 };
 

@@ -22,15 +22,61 @@ function mostrarCarrito() {
 
   let total = 0;
 
-  console.log(!carrito.producto)
-  if (carrito.producto) {
-    mensajeCarritoVacio.style.display = "block";
-  }
-  carrito.forEach((producto) => {
-    const divProducto = document.createElement("div");
-    divProducto.classList.add("carrito-producto");
+  // console.log(!carrito.producto)
+  // if (carrito.producto) {
+  //   mensajeCarritoVacio.style.display = "block";
+  // }
+  // carrito.forEach((producto) => {
+  //   const divProducto = document.createElement("div");
+  //   divProducto.classList.add("carrito-producto");
 
-    divProducto.innerHTML = `
+  //   divProducto.innerHTML = `
+  //       <img class="carrito-producto-imagen" src="${
+  //         producto.imagen
+  //       }" alt="Imagen producto">
+  //       <div class="carrito-producto-titulo">
+  //         <small>Título</small>
+  //         <h3>${producto.nombre}</h3>
+  //       </div>
+  //       <div class="carrito-producto-cantidad">
+  //         <small>Cantidad</small>
+  //         <p>${producto.cant}</p>
+  //       </div>
+  //       <div class="carrito-producto-precio">
+  //         <small>Precio</small>
+  //         <p>$${producto.precio}</p>
+  //       </div>
+  //       <div class="carrito-producto-subtotal">
+  //         <small>Subtotal</small>
+  //         <p>$${producto.precio * producto.cant}</p>
+  //       </div>
+  //       <div class="carrito-producto-anhadir">
+  //         <p>Comprar</p>
+  //       </div>
+  //       <div class="carrito-producto-eliminar">
+  //         <p>Eliminar</p>
+  //       </div>
+  //     `;
+
+  //   carritoProductos.appendChild(divProducto);
+
+  //   total += producto.precio * producto.cant;
+  // });
+
+  // document.getElementById("Total").textContent = `$${total}`;
+  if (carrito.length === 0) {
+    // Si el carrito está vacío, mostramos el mensaje correspondiente
+    mensajeCarritoVacio.style.display = "block";
+    document.getElementById("Total").textContent = `0`;
+  } else {
+    // Si hay productos, los mostramos en el carrito
+    let total = 0;
+
+    carrito.forEach((producto) => {
+      const divProducto = document.createElement("div");
+      divProducto.classList.add("carrito-producto");
+
+      divProducto.innerHTML = `
         <img class="carrito-producto-imagen" src="${
           producto.imagen
         }" alt="Imagen producto">
@@ -58,12 +104,14 @@ function mostrarCarrito() {
         </div>
       `;
 
-    carritoProductos.appendChild(divProducto);
+      carritoProductos.appendChild(divProducto);
+      total += producto.precio * producto.cant;
+    });
 
-    total += producto.precio * producto.cant;
-  });
-
-  document.getElementById("Total").textContent = `$${total}`;
+    // Mostrar el total
+    document.getElementById("Total").textContent = `$${total}`;
+    carritoAcciones.style.display = "flex";
+  }
 }
 
 // Vaciar carrito
@@ -105,3 +153,7 @@ if (comprarAhoraBtn) {
 mostrarCarrito();
 
 actualizarContadorCarrito();
+
+if (typeof closeMenu === "function") {
+  closeMenu(); // Llama a la función cuando lo necesites
+}
