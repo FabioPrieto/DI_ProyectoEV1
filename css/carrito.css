@@ -16,7 +16,11 @@
   height: 50px;
   border-radius: 6px;
 }
+.carrito-producto-anhadir{
+  cursor: pointer;
+}
 .carrito-producto-eliminar{
+  cursor: pointer;
   color: red;
 }
 .carrito-acciones {

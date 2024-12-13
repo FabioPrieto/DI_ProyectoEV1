@@ -13,7 +13,7 @@ const vaciarCarritoBtn = document.querySelector(".carrito-acciones-vaciar");
 const mensajeCarritoVacio = document.getElementById("carrito-vacio");
 const mensajeCarritoComprado = document.getElementById("carrito-comprado");
 const comprarAhoraBtn = document.querySelector(".carrito-acciones-comprar");
-
+var compra;
 function mostrarCarrito() {
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -21,12 +21,17 @@ function mostrarCarrito() {
   carritoProductos.innerHTML = "";
 
   let total = 0;
-
-  if (carrito.length === 0) {
+  console.log(compra)
+  if ((carrito.length === 0) && compra) {
+    mensajeCarritoComprado.style.display = "block";
+    document.getElementById("Total").textContent = `0`;
+    compra = false
+  }else if (carrito.length === 0) {
     // Si el carrito está vacío, mostramos el mensaje correspondiente
     mensajeCarritoVacio.style.display = "block";
     document.getElementById("Total").textContent = `0`;
-  } else {
+    compra = false
+  }else {
     // Si hay productos, los mostramos en el carrito
     let total = 0;
 
@@ -68,6 +73,7 @@ function mostrarCarrito() {
 
     // Mostrar el total
     document.getElementById("Total").textContent = `$${total}`;
+    compra = false
 
     const botonesComprar = document.querySelectorAll(".carrito-producto-anhadir");
     const botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
@@ -147,21 +153,27 @@ if (comprarAhoraBtn) {
 
 // Función para manejar la compra de un producto
 function comprarProducto(index) {
-  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-  carrito.splice(index, 1); // Elimina el producto del carrito
-  localStorage.setItem("carrito", JSON.stringify(carrito)); // Actualiza el localStorage
-  mostrarCarrito(); // Vuelve a renderizar el carrito
-  actualizarContadorCarrito();
+  const confirmacion = confirm("¿Estás seguro de que quieres comprar este producto?");
+  if (confirmacion) {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    compra = true
+    carrito.splice(index, 1); // Elimina el producto del carrito
+    localStorage.setItem("carrito", JSON.stringify(carrito)); // Actualiza el localStorage
+    mostrarCarrito(); // Vuelve a renderizar el carrito
+    actualizarContadorCarrito();
+  }
 }
 
 // Función para manejar la eliminación de un producto
 function eliminarProducto(index) {
-  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  carrito.splice(index, 1); // Elimina el producto del carrito
-  localStorage.setItem("carrito", JSON.stringify(carrito)); // Actualiza el localStorage
-  mostrarCarrito(); // Vuelve a renderizar el carrito
-  actualizarContadorCarrito();
+  const confirmacion = confirm("¿Estás seguro de que quieres eliminar este producto?");
+  if (confirmacion) {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    carrito.splice(index, 1); // Elimina el producto del carrito
+    localStorage.setItem("carrito", JSON.stringify(carrito)); // Actualiza el localStorage
+    mostrarCarrito(); // Vuelve a renderizar el carrito
+    actualizarContadorCarrito();
+  }
 }
 
 
