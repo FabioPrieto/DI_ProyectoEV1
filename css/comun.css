@@ -91,9 +91,18 @@ aside {
   top: 1rem;
   height: calc(100vh - 2rem);
   z-index: 10;
+  transition: 0.3s all;
+  z-index: 1000;
 }
-aside > button {
+aside .close-menu {
   display: none;
+  color: var(--clr-white);
+  background-color: var(--clr-main);
+  border: 0px;
+  font-size: xx-large;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 aside header {
   flex-grow: 0.01;
@@ -146,6 +155,35 @@ header.header-mobile i {
   font-size: 2rem;
 }
 
+/* Cuando el aside está visible */
+aside.aside-visible {
+  left: 0; /* Lo trae a la vista */
+  background-color: var(--clr-main);
+  height: 100vh;
+  margin-top: -1rem;
+}
+
+/* Overlay inicial (oculto) */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Oscurecimiento */
+  z-index: 999; /* Justo debajo del aside */
+  display: none; /* Inicialmente oculto */
+}
+
+/* Mostrar el overlay */
+.overlay.visible {
+  display: block; /* Aparece cuando es visible */
+}
+
+.no-scroll{
+  overflow: hidden;
+}
+
 /* Media queries */
 
 /* Para pantallas de 1300px o menos */
@@ -178,5 +216,8 @@ header.header-mobile i {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  aside .close-menu{
+    display: block;
   }
 }

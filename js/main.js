@@ -22,14 +22,15 @@ const cargarProductos = async () => {
         const producto = e.target.closest(".producto");
 
         const productoId = producto.getAttribute("id");
-        const productoTitulo = producto.querySelector(".producto-titulo").textContent;
+        const productoTitulo =
+          producto.querySelector(".producto-titulo").textContent;
         const productoPrecio = parseFloat(
           producto
             .querySelector(".producto-precio")
             .textContent.replace("$", "")
             .trim()
         );
-        const productoImagen = producto.querySelector(".producto-imagen").src
+        const productoImagen = producto.querySelector(".producto-imagen").src;
 
         let numerito = document.getElementById("numerito");
         numerito.textContent = parseInt(numerito.textContent) + 1;
