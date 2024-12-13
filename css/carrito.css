@@ -81,4 +81,13 @@
   aside {
     padding: 0rem;
   }
+  .carrito-producto-subtotal{
+    display: none;
+  }
+}
+/* Para pantallas de 400px o menos */
+@media screen and (max-width: 400px) {
+  .carrito-productos{
+    font-size: 0.8em;
+  }
 }

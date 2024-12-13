@@ -132,6 +132,8 @@ aside nav {
 .menu li a .numerito {
   color: var(--clr-white);
   background-color: var(--clr-main);
+  padding: 1px;
+  border-radius: 3px;
 }
 .menu li button:hover {
   background-color: var(--clr-white);
